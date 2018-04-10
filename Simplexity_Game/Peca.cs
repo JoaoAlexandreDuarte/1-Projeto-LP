@@ -24,5 +24,15 @@ namespace Simplexity_Game {
             this.color = color;
             this.shape = shape;
         }
+
+        public Cor GetColor() {
+            return this.color;
+        }
+
+        public Forma GerShape() {
+            return this.shape;
+        }
+
+
     }
 }

@@ -33,6 +33,12 @@ namespace Simplexity_Game {
             return this.shape;
         }
 
+        public void SetColor(Cor color) {
+            this.color = color;
+        }
 
+        public void SetForma(Forma shape) {
+            this.shape = shape;
+        }
     }
 }

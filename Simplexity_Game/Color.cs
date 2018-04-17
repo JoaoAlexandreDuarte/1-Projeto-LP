@@ -3,7 +3,7 @@
     /// Enumeration for color
     /// </summary>
     public enum Color {
-        Red = 0,
-        White
+        White = 0,
+        Red
     }
 }

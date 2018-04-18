@@ -3,7 +3,7 @@
     /// Enumeration for player
     /// </summary>
     public enum PlayerNumber {
-        One = 0,
+        One = 1,
         Two
     }
 }

@@ -51,10 +51,18 @@ namespace Simplexity_Game {
             return cilinders.Count;
         }
 
+        /// <summary>
+        /// Will remove a cube from the queue and return it
+        /// </summary>
+        /// <returns></returns>
         public Piece PlayCube() {
             return (Piece) cubes.Dequeue();
         }
 
+        /// <summary>
+        /// Will remove a cilinder from the queue and return it
+        /// </summary>
+        /// <returns></returns>
         public Piece PlayCilinder() {
             return (Piece) cilinders.Dequeue();
         }

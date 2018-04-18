@@ -3,7 +3,7 @@
     /// <summary>
     /// Class that creates a piece
     /// </summary>
-    public class Piece {
+    class Piece {
         //Properties
         public Color Color { get; }
         public Shape Shape { get; }

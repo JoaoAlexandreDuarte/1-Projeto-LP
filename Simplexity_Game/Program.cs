@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Simplexity_Game {
-    public class Program {
+    class Program {
         static void Main(string[] args) {
             Interface board = new Interface();
 

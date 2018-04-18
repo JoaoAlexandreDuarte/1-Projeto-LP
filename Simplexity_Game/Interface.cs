@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Simplexity_Game {
-    public class Interface {
+    class Interface {
 
         public Interface() {
 

@@ -5,7 +5,7 @@ namespace Simplexity_Game {
     /// <summary>
     /// Class that creates the players and its pieces
     /// </summary>
-    public class Player {
+    class Player {
         // Property that will save the player's number
         public PlayerNumber Number { get; }
         // Property that will return the total pieces

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Simplexity_Game {
     public class Program {
+        /// <summary>
+        /// Main method that initializes the Game
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args) {
-            Interface board = new Interface();
-
-            board.ShowBoard();
-
-            Console.ReadKey();
+            // Creates an instance of GameLoop to start the game
+            GameLoop gameLoop = new GameLoop();
+            gameLoop.Update();
         }
     }
 }

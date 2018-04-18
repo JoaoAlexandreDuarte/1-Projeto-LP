@@ -6,7 +6,7 @@ namespace Simplexity_Game {
     /// </summary>
     public class Board {
         // Bi-dimensional array that will serve as a board
-        Piece[,] BoardArray { get; }
+        public Piece[,] BoardArray { get; }
 
         /// <summary>
         /// Constructor for the Board, initializes the array

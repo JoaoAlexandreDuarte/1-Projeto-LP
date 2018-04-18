@@ -21,7 +21,7 @@ namespace Simplexity_Game {
 
             // Array that creates 11 cubes
             for (int i = 0; i < 11; i++) {
-                cubes[0] = new Piece(Color.White, Shape.Cube);
+                cubes[i] = new Piece(Color.White, Shape.Cube);
             }
         }
     }

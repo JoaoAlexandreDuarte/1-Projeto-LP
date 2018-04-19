@@ -5,6 +5,9 @@ namespace Simplexity_Game {
     /// Class that creates a board and manages it's win condition
     /// </summary>
     public class Board {
+        // X and Y of the array
+        public int X { get; } = 7;
+        public int Y { get; } = 7;
         // Bi-dimensional array that will serve as a board
         public Piece[,] BoardArray { get; }
 
@@ -12,7 +15,7 @@ namespace Simplexity_Game {
         /// Constructor for the Board, initializes the array
         /// </summary>
         public Board() {
-            BoardArray = new Piece[7, 7];
+            BoardArray = new Piece[X, Y];
         }
 
         /// <summary>
@@ -27,7 +30,7 @@ namespace Simplexity_Game {
             int row = CheckColumn(column);
 
             // If the row is a possible one it will place the piece there
-            if ((row >= 0) && (row < 7)) {
+            if ((row >= 0) && (row < X)) {
                 BoardArray[row, column] = piece;
             } else {
 
@@ -49,7 +52,7 @@ namespace Simplexity_Game {
             int row = -1;
 
             // Checks the given column for the spare space
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < X; i++) {
 
                 // If the current space is null will break the cicle and 
                 // return it

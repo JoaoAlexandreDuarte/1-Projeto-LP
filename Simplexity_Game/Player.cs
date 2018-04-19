@@ -11,82 +11,66 @@ namespace Simplexity_Game {
         private const Color p2Color = Color.Red;
         // Property that will save the player's number
         public PlayerNumber Number { get; }
-        // Property that will return the total pieces
-        public int TotalPieces {
+        // The given player pieces
+        public Piece Cube { get; private set; }
+        public Piece Cilinder { get; private set; }
+        // The given player number of pieces
+        public short CubesNumber { get; private set; }
+        public short CilindersNumber { get; private set; }
+        // The total number of the player pieces
+        public short TotalPieces {
             get {
-                return cubes.Count + cilinders.Count;
+                return (short)(CubesNumber + CilindersNumber);
             }
         }
-        // Saves the number of pieces available and then provides their count
-        private Queue cubes = new Queue();
-        private Queue cilinders = new Queue();
 
         /// <summary>
-        /// Constructer for Player and its pieces
+        /// Constructer for the Player according to it's number that also
+        /// creates the given player pieces
         /// </summary>
         public Player(PlayerNumber number) {
             Number = number;
+            // Sets the current color according to the given PlayerNumber
+            Color currentColor = (number == PlayerNumber.One ?
+                p1Color : p2Color);
 
-            // Give cubes and cilinders to the players
-            if (Number == PlayerNumber.One) {
-                CreateCubes(Color.White);
-                CreateCilinders(Color.White);
-            } else {
-                CreateCubes(Color.Red);
-                CreateCilinders(Color.Red);
-            }
+            // Creates the pieces that can be played by the player
+            Cube = new Piece(currentColor, Shape.Cube);
+            Cilinder = new Piece(currentColor, Shape.Cilinder);
+
+            // Initializes each piece's number
+            CubesNumber = 11;
+            CilindersNumber = 10;
         }
 
         /// <summary>
-        ///  Will return the number of cubes
+        /// Returns a cube that can be "played" and decreases it's counter
         /// </summary>
-        /// <returns></returns>
-        public int CubesNumber() {
-            return cubes.Count;
-        }
-
-        /// <summary>
-        /// Will return the number of cilinders
-        /// </summary>
-        /// <returns></returns>
-        public int CilindersNumber() {
-            return cilinders.Count;
-        }
-
-        /// <summary>
-        /// Will remove a cube from the queue and return it
-        /// </summary>
-        /// <returns></returns>
         public Piece PlayCube() {
-            return (Piece)cubes.Dequeue();
+            Piece cube = null;
+
+            // If the player has more than 0 cubes it will "play" one
+            if (CubesNumber > 0) {
+                CubesNumber--;
+                cube = Cube;
+            }
+
+            return cube;
         }
 
         /// <summary>
-        /// Will remove a cilinder from the queue and return it
+        /// Returns a cilinder that can be "played" and decreases it's counter
         /// </summary>
-        /// <returns></returns>
         public Piece PlayCilinder() {
-            return (Piece)cilinders.Dequeue();
-        }
+            Piece cilinder = null;
 
-        /// <summary>
-        /// Method that will create the necessary cubes
-        /// </summary>
-        private void CreateCubes(Color color) {
-            // The for cycle will add the cubes to the queue
-            for (int i = 0; i < 11; i++) {
-                cubes.Enqueue(new Piece(color, Shape.Cube));
+            // If the player has more than 0 cilinders it will "play" one
+            if (CilindersNumber > 0) {
+                CilindersNumber--;
+                cilinder = Cilinder;
             }
-        }
 
-        /// <summary>
-        /// Method that will create the necessary cilinders
-        /// </summary>
-        private void CreateCilinders(Color color) {
-            // The for cycle will add the cilinders to the queue
-            for (int i = 0; i < 10; i++) {
-                cilinders.Enqueue(new Piece(color, Shape.Cilinder));
-            }
+            return cilinder;
         }
     }
 }

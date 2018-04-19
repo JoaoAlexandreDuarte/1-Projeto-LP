@@ -1,10 +1,18 @@
 ﻿using System;
 
 namespace Simplexity_Game {
+    /// <summary>
+    /// Class that renders the interface to the user
+    /// </summary>
     public class Interface {
+        // Variables that keep the Cube and Cilinder shapes
         private string square = "\u25a0  ";
         private string circle = "O  ";
 
+        /// <summary>
+        /// Constructs the interface so that it's possible to call their
+        /// methods
+        /// </summary>
         public Interface() {
 
         }

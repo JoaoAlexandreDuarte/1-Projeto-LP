@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board.cs" />
     <Compile Include="Color.cs" />
+    <Compile Include="GameLoop.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="Player.cs" />

@@ -29,6 +29,10 @@ namespace Simplexity_Game {
             Player currentPlayer;
             // Starts at turn 0
             int turn = 0;
+            // Column input
+            int column;
+            // Piece input
+            string shape;
 
             do {
 
@@ -40,6 +44,23 @@ namespace Simplexity_Game {
                 currentPlayer = (turn % 2) == 0 ? player1 : player2;
 
                 visualization.ShowCurrentPieces(currentPlayer);
+
+                Console.WriteLine("Which row do you want to place your " +
+                    "piece?");
+
+                column = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Choose your shape: Cube/Cilinder");
+
+                shape = Console.ReadLine();
+
+                if ((shape == "cube") || (shape == "Cube")) {
+                    board.PlacePiece(currentPlayer.PlayCube(), column);
+                } else if ((shape == "cilinder") || (shape == "Cilinder")) {
+                    board.PlacePiece(currentPlayer.PlayCilinder(), column);
+                } else {
+                    Console.WriteLine("Vai passear");
+                }
 
                 Console.WriteLine();
 

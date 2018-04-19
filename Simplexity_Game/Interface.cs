@@ -20,12 +20,12 @@ namespace Simplexity_Game {
         public void ShowCurrentPieces(Player player) {
             Console.WriteLine("\nPlayer " + player.Number +
                   " has a total of " + player.TotalPieces +
-                  " pieces to play right now (" + player.CubesNumber() +
-                  " cubes and " + player.CilindersNumber() + " cilinders");
+                  " pieces to play right now (" + player.CubesNumber +
+                  " cubes and " + player.CilindersNumber + " cilinders");
         }
 
         public void ShowBoard(Piece[,] board) {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 6; i >= 0; i--) {
                 Console.Write(" ");
 
                 for (int j = 0; j < 7; j++) {

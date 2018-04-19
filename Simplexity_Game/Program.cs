@@ -9,7 +9,6 @@ namespace Simplexity_Game {
         /// <summary>
         /// Main method that initializes the Game
         /// </summary>
-        /// <param name="args"></param>
         static void Main(string[] args) {
             // Creates an instance of GameLoop to start the game
             GameLoop gameLoop = new GameLoop();

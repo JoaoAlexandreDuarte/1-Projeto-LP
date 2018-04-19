@@ -1,10 +1,18 @@
 ﻿using System;
 
 namespace Simplexity_Game {
+    /// <summary>
+    /// Class that renders the interface to the user
+    /// </summary>
     public class Interface {
+        // Variables that keep the Cube and Cilinder shapes
         private string square = "\u25a0  ";
         private string circle = "O  ";
 
+        /// <summary>
+        /// Constructs the interface so that it's possible to call their
+        /// methods
+        /// </summary>
         public Interface() {
 
         }
@@ -12,12 +20,12 @@ namespace Simplexity_Game {
         public void ShowCurrentPieces(Player player) {
             Console.WriteLine("\nPlayer " + player.Number +
                   " has a total of " + player.TotalPieces +
-                  " pieces to play right now (" + player.CubesNumber() +
-                  " cubes and " + player.CilindersNumber() + " cilinders");
+                  " pieces to play right now (" + player.CubesNumber +
+                  " cubes and " + player.CilindersNumber + " cilinders");
         }
 
         public void ShowBoard(Piece[,] board) {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 6; i >= 0; i--) {
                 Console.Write(" ");
 
                 for (int j = 0; j < 7; j++) {

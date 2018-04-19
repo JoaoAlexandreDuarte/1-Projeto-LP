@@ -50,21 +50,19 @@ namespace Simplexity_Game {
 
                 column = Convert.ToInt32(Console.ReadLine());
 
+
+
                 Console.WriteLine("Choose your shape: Cube/Cilinder");
 
                 shape = Console.ReadLine();
 
                 if ((shape == "cube") || (shape == "Cube")) {
-                    board.PlacePiece(currentPlayer.PlayCube(), column);
+                    board.PlacePiece(currentPlayer.PlayCube(), column - 1);
                 } else if ((shape == "cilinder") || (shape == "Cilinder")) {
-                    board.PlacePiece(currentPlayer.PlayCilinder(), column);
+                    board.PlacePiece(currentPlayer.PlayCilinder(), column - 1);
                 } else {
                     Console.WriteLine("Vai passear");
                 }
-
-                Console.WriteLine();
-
-                Console.ReadLine();
 
                 turn++;
             } while (turn < 50);

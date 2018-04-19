@@ -6,6 +6,9 @@ namespace Simplexity_Game {
     /// Class that creates the players and its pieces
     /// </summary>
     public class Player {
+        // Constants that save the player color
+        private const Color p1Color = Color.White;
+        private const Color p2Color = Color.Red;
         // Property that will save the player's number
         public PlayerNumber Number { get; }
         // Property that will return the total pieces
@@ -14,7 +17,7 @@ namespace Simplexity_Game {
                 return cubes.Count + cilinders.Count;
             }
         }
-        // Saves the number os pieces available and then provides their count
+        // Saves the number of pieces available and then provides their count
         private Queue cubes = new Queue();
         private Queue cilinders = new Queue();
 
@@ -28,8 +31,7 @@ namespace Simplexity_Game {
             if (Number == PlayerNumber.One) {
                 CreateCubes(Color.White);
                 CreateCilinders(Color.White);
-            }
-            else {
+            } else {
                 CreateCubes(Color.Red);
                 CreateCilinders(Color.Red);
             }
@@ -56,7 +58,7 @@ namespace Simplexity_Game {
         /// </summary>
         /// <returns></returns>
         public Piece PlayCube() {
-            return (Piece) cubes.Dequeue();
+            return (Piece)cubes.Dequeue();
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace Simplexity_Game {
         /// </summary>
         /// <returns></returns>
         public Piece PlayCilinder() {
-            return (Piece) cilinders.Dequeue();
+            return (Piece)cilinders.Dequeue();
         }
 
         /// <summary>

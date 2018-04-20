@@ -12,8 +12,7 @@ namespace Simplexity_Game {
         private string circle = "O  ";
 
         /// <summary>
-        /// Constructs the interface so that it's possible to call their
-        /// methods
+        /// Initializes a new instance of the <see cref="Interface{T}"/> class.
         /// </summary>
         public Interface() {
 

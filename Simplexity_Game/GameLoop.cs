@@ -36,7 +36,7 @@ namespace Simplexity_Game {
             // Piece input
             string shape;
             // Empty object that saves the player that won
-            Object playing = null;
+            Object end = null;
 
             do {
                 Console.Clear();
@@ -86,14 +86,14 @@ namespace Simplexity_Game {
                     turn--;
                 }
 
-                playing = checker.CheckWin(board);
+                end = checker.CheckWin(board);
 
                 turn++;
-            } while (playing == null);
+            } while (end == null);
 
             Console.Clear();
             visualization.ShowBoard(board.BoardArray);
-            visualization.FinalMessage(playing);
+            visualization.FinalMessage(end);
             Console.ReadKey();
         }
     }

@@ -35,6 +35,8 @@ namespace Simplexity_Game {
             int column;
             // Piece input
             string shape;
+            // Empty object that saves the player that won
+            Object playing = null;
 
             do {
                 Console.Clear();
@@ -63,11 +65,18 @@ namespace Simplexity_Game {
 
                     if ((shape == "1") || (shape == "cube") ||
                         (shape == "Cube")) {
-                        board.PlacePiece(currentPlayer.PlayCube(), column - 1);
+                        if (!board.PlacePiece(currentPlayer.PlayCube(),
+                            column - 1)) {
+                            turn--;
+                            visualization.ErrorFull();
+                        }
                     } else if ((shape == "2") || (shape == "cilinder") ||
                         (shape == "Cilinder")) {
-                        board.PlacePiece(currentPlayer.PlayCilinder(),
-                            column - 1);
+                        if (!board.PlacePiece(currentPlayer.PlayCilinder(),
+                            column - 1)) {
+                            turn--;
+                            visualization.ErrorFull();
+                        }
                     } else {
                         visualization.ErrorPiece();
                         turn--;
@@ -77,10 +86,15 @@ namespace Simplexity_Game {
                     turn--;
                 }
 
+                playing = checker.CheckWin(board);
 
                 turn++;
-            } while (turn < 50);
+            } while (playing == null);
 
+            Console.Clear();
+            visualization.ShowBoard(board.BoardArray);
+            visualization.FinalMessage(playing);
+            Console.ReadKey();
         }
     }
 }

@@ -69,12 +69,12 @@ namespace Simplexity_Game {
             Console.ReadLine();
         }
 
-        public void FinalMessage(Object playing) {
-            if ((PlayerNumber)playing == PlayerNumber.One) {
+        public void FinalMessage(Object result) {
+            if ((PlayerNumber)result == PlayerNumber.One) {
                 Console.WriteLine("\nPlayer 1 has won!");
-            } else if ((PlayerNumber)playing == PlayerNumber.Two) {
+            } else if ((PlayerNumber)result == PlayerNumber.Two) {
                 Console.WriteLine("\nPlayer 2 has won!");
-            } else if (playing == (Object)0) {
+            } else if (result == (Object)0) {
                 Console.WriteLine("\nThe game has ended in a draw!");
             } else {
                 Console.WriteLine("\nSomething went wrong!");

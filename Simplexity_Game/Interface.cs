@@ -59,7 +59,7 @@ namespace Simplexity_Game {
         /// Renders the error for when the player inputs a wrong piece
         /// </summary>
         public void ErrorPiece() {
-            Console.WriteLine("\nNot a recognizeable piece! (Valid inputs" +
+            Console.WriteLine("\nNot a recognizeable piece! (Valid inputs" + 
                 "1/Cube/cube OR 2/Cilinder/cilinder)");
             Console.ReadLine();
         }

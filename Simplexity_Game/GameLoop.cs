@@ -22,7 +22,7 @@ namespace Simplexity_Game {
             Board board = new Board();
             // Creates the interface
             Interface visualization = new Interface();
-            // Creates the checket
+            // Creates the checker
             Checker checker = new Checker();
             // Creates the 2 players
             Player player1 = new Player(PlayerNumber.One);
@@ -52,7 +52,7 @@ namespace Simplexity_Game {
                 visualization.AskColumn();
 
                 // TryParse tries to convert to int32, used this way so that
-                // clicking enter by mistake (empty string) doesnt crash the
+                // clicking enter by mistake (empty string) doesn't crash the
                 // program.
                 Int32.TryParse(Console.ReadLine(), out column);
 

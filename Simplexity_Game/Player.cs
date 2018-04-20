@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-
-namespace Simplexity_Game {
+﻿namespace Simplexity_Game {
     /// <summary>
     /// Class that creates the players and its pieces
     /// </summary>
@@ -11,22 +8,22 @@ namespace Simplexity_Game {
         private const Color p2Color = Color.Red;
         // Property that will save the player's number
         public PlayerNumber Number { get; }
-        // The given player pieces
+        // The pieces given to the player
         public Piece Cube { get; private set; }
         public Piece Cilinder { get; private set; }
-        // The given player number of pieces
+        // The number of pieces given to the player
         public short CubesNumber { get; private set; }
         public short CilindersNumber { get; private set; }
-        // The total number of the player pieces
+        // The total number of pieces given to the player
         public short TotalPieces {
             get {
                 return (short)(CubesNumber + CilindersNumber);
             }
         }
-
+        
         /// <summary>
-        /// Constructer for the Player according to it's number that also
-        /// creates the given player pieces
+        /// Constructor for the Player according to it's number that also
+        /// creates the player's pieces
         /// </summary>
         public Player(PlayerNumber number) {
             Number = number;

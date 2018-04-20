@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Simplexity_Game {
+﻿namespace Simplexity_Game {
     public class Program {
         /// <summary>
         /// Main method that initializes the Game

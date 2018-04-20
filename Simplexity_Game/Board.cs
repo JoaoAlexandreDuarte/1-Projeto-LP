@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Simplexity_Game {
+﻿namespace Simplexity_Game {
     /// <summary>
-    /// Class that creates a board and manages it's win condition
+    /// Class that creates a board and manages its win condition
     /// </summary>
     public class Board {
         // X and Y of the array
@@ -23,27 +21,22 @@ namespace Simplexity_Game {
         /// return true or false according to the possibilities
         /// </summary>
         public bool PlacePiece(Piece piece, int column) {
-            // Starts at true because the player will probably give as an input
-            // a possible column to play
-            bool canPlay = true;
+            // Starts at false to prevent an else condition
+            bool canPlay = false;
             // Calls the private method to see where the piece will be placed
             int row = CheckColumn(column);
 
             // If the row is a possible one it will place the piece there
             if ((row >= 0) && (row < X)) {
                 BoardArray[row, column] = piece;
-            } else {
-
-                // If not, gives the return value a false
-                canPlay = false;
+                canPlay = true;
             }
-
 
             return canPlay;
         }
 
         /// <summary>
-        /// This method will check at which position 
+        /// This method will check at which position the piece can be placed 
         /// </summary>
         private int CheckColumn(int column) {
             // Starts at -1 so that it will return an error by default, any
@@ -54,7 +47,7 @@ namespace Simplexity_Game {
             // Checks the given column for the spare space
             for (int i = 0; i < X; i++) {
 
-                // If the current space is null will break the cicle and 
+                // If the current space is null it will break the cicle and 
                 // return it
                 if (BoardArray[i, column] == null) {
                     row = i;

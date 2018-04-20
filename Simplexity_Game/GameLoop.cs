@@ -6,7 +6,7 @@ namespace Simplexity_Game {
     /// Class that wil serve as the Gameloop to run the game cicles
     /// </summary>
     public class GameLoop {
-        
+
         /// <summary>
         /// Constructor for the GameLoop
         /// </summary>
@@ -22,6 +22,8 @@ namespace Simplexity_Game {
             Board board = new Board();
             // Creates the interface
             Interface visualization = new Interface();
+            // Creates the checket
+            Checker checker = new Checker();
             // Creates the 2 players
             Player player1 = new Player(PlayerNumber.One);
             Player player2 = new Player(PlayerNumber.Two);
@@ -35,7 +37,7 @@ namespace Simplexity_Game {
             string shape;
 
             do {
-
+                Console.Clear();
                 Console.WriteLine();
                 // Shows the Board state
                 visualization.ShowBoard(board.BoardArray);
@@ -43,26 +45,38 @@ namespace Simplexity_Game {
                 //
                 currentPlayer = (turn % 2) == 0 ? player1 : player2;
 
-                visualization.ShowCurrentPieces(currentPlayer);
 
-                Console.WriteLine("Which row do you want to place your " +
-                    "piece?");
+                Console.WriteLine("\nCurrent turn: " + (turn + 1));
+                visualization.ShowInfo(currentPlayer);
 
-                column = Convert.ToInt32(Console.ReadLine());
+                visualization.AskColumn();
 
+                // TryParse tries to convert to int32, used this way so that
+                // clicking enter by mistake (empty string) doesnt crash the
+                // program.
+                Int32.TryParse(Console.ReadLine(), out column);
 
+                if ((column >= 1) && (column <= 7)) {
+                    visualization.AskPiece();
 
-                Console.WriteLine("Choose your shape: Cube/Cilinder");
+                    shape = Console.ReadLine();
 
-                shape = Console.ReadLine();
-
-                if ((shape == "cube") || (shape == "Cube")) {
-                    board.PlacePiece(currentPlayer.PlayCube(), column - 1);
-                } else if ((shape == "cilinder") || (shape == "Cilinder")) {
-                    board.PlacePiece(currentPlayer.PlayCilinder(), column - 1);
+                    if ((shape == "1") || (shape == "cube") ||
+                        (shape == "Cube")) {
+                        board.PlacePiece(currentPlayer.PlayCube(), column - 1);
+                    } else if ((shape == "2") || (shape == "cilinder") ||
+                        (shape == "Cilinder")) {
+                        board.PlacePiece(currentPlayer.PlayCilinder(),
+                            column - 1);
+                    } else {
+                        visualization.ErrorPiece();
+                        turn--;
+                    }
                 } else {
-                    Console.WriteLine("Vai passear");
+                    visualization.ErrorColumn();
+                    turn--;
                 }
+
 
                 turn++;
             } while (turn < 50);

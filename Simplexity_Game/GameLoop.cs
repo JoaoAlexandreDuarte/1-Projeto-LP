@@ -3,12 +3,13 @@
 namespace Simplexity_Game {
 
     /// <summary>
-    /// Class that wil serve as the Gameloop to run the game cicles
+    /// Class that wil serve as the Gameloop to run the game cicles and 
+    /// communicate between the needed classes
     /// </summary>
     public class GameLoop {
 
         /// <summary>
-        /// Constructor for the GameLoop
+        /// Initializes a new instance of the <see cref="GameLoop{T}"/> class.
         /// </summary>
         public GameLoop() {
 

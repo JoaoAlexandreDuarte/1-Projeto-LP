@@ -10,8 +10,8 @@ namespace Simplexity_Game {
 
         }
 
-        public Player CheckWin(Piece[,] board) {
-
+        public Player CheckWin(Piece[,] board, Player player) {
+            return player;
 
 
         }

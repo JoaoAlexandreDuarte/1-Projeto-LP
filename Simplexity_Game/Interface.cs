@@ -64,10 +64,15 @@ namespace Simplexity_Game {
             Console.ReadLine();
         }
 
+        public void ErrorFull() {
+            Console.WriteLine("\nThe row is full! Check another one");
+            Console.ReadLine();
+        }
+
         public void FinalMessage(Object playing) {
-            if (playing == (Object)PlayerNumber.One) {
+            if ((PlayerNumber)playing == PlayerNumber.One) {
                 Console.WriteLine("\nPlayer 1 has won!");
-            } else if (playing == (Object)PlayerNumber.Two) {
+            } else if ((PlayerNumber)playing == PlayerNumber.Two) {
                 Console.WriteLine("\nPlayer 2 has won!");
             } else if (playing == (Object)0) {
                 Console.WriteLine("\nThe game has ended in a draw!");

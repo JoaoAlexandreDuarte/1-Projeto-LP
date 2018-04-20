@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="Checker.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="GameLoop.cs" />
     <Compile Include="Interface.cs" />

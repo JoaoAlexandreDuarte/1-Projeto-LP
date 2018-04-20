@@ -9,7 +9,7 @@
         public Shape Shape { get; }
 
         /// <summary>
-        /// A constructor that builds a piece object
+        /// Initializes a new instance of the <see cref="Piece{T}"/> class.
         /// </summary>
         public Piece(Color color, Shape shape) {
             Color = color;

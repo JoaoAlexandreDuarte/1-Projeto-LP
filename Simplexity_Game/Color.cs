@@ -1,9 +1,15 @@
 ﻿namespace Simplexity_Game {
     /// <summary>
-    /// Enumeration for color
+    /// Colors Used
     /// </summary>
     public enum Color {
+        /// <summary>
+        /// White color
+        /// </summary>
         White = 0,
+        /// <summary>
+        /// Red color
+        /// </summary>
         Red
     }
 }

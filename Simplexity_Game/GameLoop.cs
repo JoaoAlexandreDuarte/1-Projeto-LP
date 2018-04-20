@@ -11,7 +11,7 @@ namespace Simplexity_Game {
         /// Constructor for the GameLoop
         /// </summary>
         public GameLoop() {
-
+            
         }
 
         /// <summary>

@@ -67,8 +67,9 @@ namespace Simplexity_Game {
         /// Renders the error for when the player places a piece in a filled
         /// row
         /// </summary>
-        public void ErrorFull() {
-            Console.WriteLine("\nThe row is full! Check another one");
+        public void ErrorPlace() {
+            Console.WriteLine("\nThe row is either full or you placed a piece" +
+                "you no longer have! Check another one");
             Console.ReadLine();
         }
 

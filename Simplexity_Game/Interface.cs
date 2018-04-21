@@ -69,7 +69,7 @@ namespace Simplexity_Game {
         /// </summary>
         public void ErrorPlace() {
             Console.WriteLine("\nThe row is either full or you placed a piece" +
-                "you no longer have! Check another one");
+                " you no longer have! Check another one");
             Console.ReadLine();
         }
 

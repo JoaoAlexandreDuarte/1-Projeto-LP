@@ -3,7 +3,7 @@
     /// Class that creates the players and its pieces
     /// </summary>
     public class Player {
-        // Constants that save the player color
+        // Constants that saves the player color
         private const Color p1Color = Color.White;
         private const Color p2Color = Color.Red;
         // Property that will save the player's number
@@ -40,7 +40,7 @@
         }
 
         /// <summary>
-        /// Returns a cube that can be "played" and decreases it's counter
+        /// Returns a cube that can be "played" and decreases its counter
         /// </summary>
         public Piece PlayCube() {
             Piece cube = null;
@@ -50,12 +50,11 @@
                 CubesNumber--;
                 cube = Cube;
             }
-
             return cube;
         }
 
         /// <summary>
-        /// Returns a cilinder that can be "played" and decreases it's counter
+        /// Returns a cilinder that can be "played" and decreases its counter
         /// </summary>
         public Piece PlayCilinder() {
             Piece cilinder = null;

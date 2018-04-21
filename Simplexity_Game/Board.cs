@@ -27,7 +27,7 @@
             int row = CheckColumn(column);
 
             // If the row is a possible one it will place the piece there
-            if ((row >= 0) && (row < X)) {
+            if ((row >= 0) && (row < X) && (piece != null)) {
                 BoardArray[row, column] = piece;
                 canPlay = true;
             }

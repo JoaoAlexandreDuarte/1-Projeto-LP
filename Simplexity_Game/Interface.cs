@@ -91,7 +91,7 @@ namespace Simplexity_Game {
             } else if ((PlayerNumber)result == PlayerNumber.Two) {
                 Console.WriteLine("\nPlayer 2 has won!");
             // Message for when it's a draw
-            } else if (result == (Object)0) {
+            } else if ((int)result == 0) {
                 Console.WriteLine("\nThe game has ended in a draw!");
             // Error message
             } else {

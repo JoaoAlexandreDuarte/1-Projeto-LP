@@ -25,13 +25,13 @@ namespace Simplexity_Game {
             Object wonPlayer = null;
 
             // Checks the Win Conditions by Shape
-            winCondition = CheckHorizontal(board, "Shape");
+            winCondition = CheckLinear(board, "Shape", "Horizontal");
             if (winCondition == null) {
-                winCondition = CheckVertical(board, "Shape");
+                winCondition = CheckLinear(board, "Shape", "Vertical");
             } else if (winCondition == null) {
-                winCondition = CheckHorizontal(board, "Color");
+                winCondition = CheckLinear(board, "Color", "Horizontal");
             } else if (winCondition == null) {
-                winCondition = CheckVertical(board, "Color");
+                winCondition = CheckLinear(board, "Color", "Vertical");
             }
 
 
@@ -56,80 +56,35 @@ namespace Simplexity_Game {
             return wonPlayer;
         }
 
-        private Object CheckHorizontal(Board board, string query) {
+        /// <summary>
+        /// Checks linearly, both horizontally and vertically according to the
+        /// way input, receives the query that can be "Shape" or "Color" in
+        /// order to know what it should search for 
+        /// </summary>
+        private Object CheckLinear(Board board, string query, string way) {
             Object winCondition = null;
             bool isLooping = true;
             int cont = 0;
             Object temp1 = null, temp2 = null;
-            Piece hor1, hor2;
-            Piece vert1, vert2;
+            Piece space1, space2;
 
             for (int i = 0; i < board.X; i++) {
                 for (int j = 0; j < board.Y - 1; j++) {
-
-                    hor1 = board.BoardArray[i, j];
-                    hor2 = board.BoardArray[i, j + 1];
-
-                    if ((hor1 == null) || (hor2 == null)) {
-                        cont = 0;
+                    if (way == "Horizontal") {
+                        space1 = board.BoardArray[i, j];
+                        space2 = board.BoardArray[i, j + 1];
                     } else {
-
-                        if (query == "Shape") {
-                            temp1 = hor1.Shape;
-                            temp2 = hor2.Shape;
-
-                            if ((Shape)temp1 == (Shape)temp2) {
-                                cont++;
-                                if (cont == 3) {
-                                    winCondition = temp2;
-                                    isLooping = false;
-                                    break;
-                                }
-                            } else {
-                                cont = 0;
-                            }
-                        } else {
-                            temp1 = hor1.Color;
-                            temp2 = hor2.Color;
-
-                            if ((Color)temp1 == (Color)temp2) {
-                                cont++;
-                                if (cont == 3) {
-                                    winCondition = temp2;
-                                    isLooping = false;
-                                    break;
-                                }
-                            } else {
-                                cont = 0;
-                            }
-                        }
+                        space1 = board.BoardArray[j, i];
+                        space2 = board.BoardArray[j + 1, i];
                     }
-                }
-                if (!isLooping) break;
-            }
-            return winCondition;
-        }
 
-        private Object CheckVertical(Board board, string query) {
-            Object winCondition = null;
-            bool isLooping = true;
-            int cont = 0;
-            Object temp1 = null, temp2 = null;
-            Piece vert1, vert2;
-
-            for (int i = 0; i < board.X; i++) {
-                for (int j = 0; j < board.Y - 1; j++) {
-
-                    vert1 = board.BoardArray[j, i];
-                    vert2 = board.BoardArray[j + 1, i];
-
-                    if ((vert1 == null) || (vert2 == null)) {
+                    if ((space1 == null) || (space2 == null)) {
                         cont = 0;
                     } else {
 
                         if (query == "Shape") {
-                            temp1 = vert1.Shape;
-                            temp2 = vert2.Shape;
+                            temp1 = space1.Shape;
+                            temp2 = space2.Shape;
 
                             if ((Shape)temp1 == (Shape)temp2) {
                                 cont++;
@@ -142,8 +97,8 @@ namespace Simplexity_Game {
                                 cont = 0;
                             }
                         } else {
-                            temp1 = vert1.Color;
-                            temp2 = vert2.Color;
+                            temp1 = space1.Color;
+                            temp2 = space2.Color;
 
                             if ((Color)temp1 == (Color)temp2) {
                                 cont++;

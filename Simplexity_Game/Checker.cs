@@ -62,57 +62,86 @@ namespace Simplexity_Game {
         /// order to know what it should search for 
         /// </summary>
         private Object CheckLinear(Board board, string query, string way) {
+            // Initializes the win condition at null
             Object winCondition = null;
+            // Checks while the loop repeats itself
             bool isLooping = true;
+            // Counts how many times the loop repeats 
             int cont = 0;
+            // Creates two temporary variables according to the query
             Object temp1 = null, temp2 = null;
+            // Creates two temporary variables according to the way
             Piece space1, space2;
 
+            // Loops through the board
             for (int i = 0; i < board.X; i++) {
                 for (int j = 0; j < board.Y - 1; j++) {
+                    // Checks if it's horizontal
                     if (way == "Horizontal") {
                         space1 = board.BoardArray[i, j];
                         space2 = board.BoardArray[i, j + 1];
+                    // Checks if it's vertical
                     } else {
                         space1 = board.BoardArray[j, i];
                         space2 = board.BoardArray[j + 1, i];
                     }
 
+                    // Verificates if the spaces are null
                     if ((space1 == null) || (space2 == null)) {
                         cont = 0;
+                    // Verificates if they have something
                     } else {
 
+                        // The searching method verifies for shapes
                         if (query == "Shape") {
                             temp1 = space1.Shape;
                             temp2 = space2.Shape;
-
+                            
+                            // Compares the current variable to the next
                             if ((Shape)temp1 == (Shape)temp2) {
+                                // Adds one to the counter
                                 cont++;
+                                // Checks if it has 4 pieces in a row and sends
+                                // the information to the method that checks
+                                // for the win condition
                                 if (cont == 3) {
+                                    // Returns the type of the piece
                                     winCondition = temp2;
                                     isLooping = false;
                                     break;
                                 }
+                            // If neither the conditions are true it will reset
+                            // the counter
                             } else {
                                 cont = 0;
                             }
+                        // The searching method verifies for color
                         } else {
                             temp1 = space1.Color;
                             temp2 = space2.Color;
 
+                            // Compares the current variable to the next
                             if ((Color)temp1 == (Color)temp2) {
+                                // Adds one to the counter
                                 cont++;
+                                // Checks if it has 4 pieces in a row and sends
+                                // the information to the method that checks
+                                // for the win condition
                                 if (cont == 3) {
+                                    // Returns the type of the piece
                                     winCondition = temp2;
                                     isLooping = false;
                                     break;
                                 }
+                                // If neither the conditions are true it will reset
+                                // the counter
                             } else {
                                 cont = 0;
                             }
                         }
                     }
                 }
+                // Breaks the loop
                 if (!isLooping) break;
             }
             return winCondition;

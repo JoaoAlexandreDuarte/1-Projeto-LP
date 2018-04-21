@@ -77,7 +77,7 @@ namespace Simplexity_Game {
                         if (!board.PlacePiece(currentPlayer.PlayCube(),
                             column - 1)) {
                             turn--;
-                            visualization.ErrorFull();
+                            visualization.ErrorPlace();
                         }
                     // Verifies if it's a valid input for cilinder
                     } else if ((shape == "2") || (shape == "cilinder") ||
@@ -87,7 +87,7 @@ namespace Simplexity_Game {
                         if (!board.PlacePiece(currentPlayer.PlayCilinder(),
                             column - 1)) {
                             turn--;
-                            visualization.ErrorFull();
+                            visualization.ErrorPlace();
                         }
                     // If it's neither it'll display the error piece message
                     } else {

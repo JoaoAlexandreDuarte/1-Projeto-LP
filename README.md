@@ -7,7 +7,7 @@
 * João Duarte    - a21702097
 
 ![UML Diagram](https://i.imgur.com/nBJECWs.png)
-![Fluxogram](https://i.imgur.com/OekKzJl.png)
+![Fluxogram](https://i.imgur.com/APlLnv6.png)
 
 ## Conclusions
 This is shit

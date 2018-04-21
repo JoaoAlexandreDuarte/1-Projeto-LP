@@ -17,19 +17,23 @@ namespace Simplexity_Game {
         /// Checks all the Win Conditions by order, Shape has priority over
         /// color
         /// </summary>
-        public Object CheckWin(Board board) {
+        public Object CheckWin(Board board, Player player1, Player player2) {
             // General Object that will receive the winning Shape or the 
             // winning Color
             Object winCondition = null;
             // Empty player that will be returned
             Object wonPlayer = null;
 
-            // Checks the Win Conditions by Shape
+            // Searches horizontally for 4 equal shapes
             winCondition = CheckLinear(board, "Shape", "Horizontal");
+            // Searches vertically for 4 equal shapes
             if (winCondition == null) {
                 winCondition = CheckLinear(board, "Shape", "Vertical");
+
+            // Searches horizontally for 4 equal colors
             } else if (winCondition == null) {
                 winCondition = CheckLinear(board, "Color", "Horizontal");
+            // Searches vertically for 4 equal colors
             } else if (winCondition == null) {
                 winCondition = CheckLinear(board, "Color", "Vertical");
             }
@@ -39,14 +43,20 @@ namespace Simplexity_Game {
             // corresponding one, there's many if's in order to promote a 
             // good practice of only having 1 return 
             if (winCondition != null) {
+                // If there's 4 cilinders then player one wins
                 if ((Shape)winCondition == Shape.Cilinder) {
                     wonPlayer = PlayerNumber.One;
+                // If there's 4 cubes then player two wins
                 } else if ((Shape)winCondition == Shape.Cube) {
                     wonPlayer = PlayerNumber.Two;
+                // If there's 4 white pieces then player one wins
                 } else if ((Color)winCondition == Color.White) {
                     wonPlayer = PlayerNumber.One;
+                // If there's 4 red pieces then player two wins
                 } else if ((Color)winCondition == Color.Red) {
                     wonPlayer = PlayerNumber.Two;
+                } else if (ChecksDraw(player1, player2) == (Object)0) {
+
                 } else {
                     // If the code reaches here there's something wrong
                     wonPlayer = -1;
@@ -54,6 +64,20 @@ namespace Simplexity_Game {
             }
 
             return wonPlayer;
+        }
+
+        /// <summary>
+        /// Checks if it's a draw
+        /// </summary>
+        private Object ChecksDraw(Player player1, Player player2) {
+            // Initializes at null
+            Object isDraw = null;
+
+            // Checks if the players still have pieces
+            if((player1.TotalPieces == 0) && (player2.TotalPieces == 0)) {
+                isDraw = 0;
+            }
+            return isDraw;            
         }
 
         /// <summary>

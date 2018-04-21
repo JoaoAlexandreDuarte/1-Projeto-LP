@@ -20,10 +20,9 @@
                 return (short)(CubesNumber + CilindersNumber);
             }
         }
-        
+
         /// <summary>
-        /// Constructor for the Player according to it's number that also
-        /// creates the player's pieces
+        /// Initializes a new instance of the <see cref="Player{T}"/> class.
         /// </summary>
         public Player(PlayerNumber number) {
             Number = number;

@@ -1,6 +1,6 @@
 ﻿namespace Simplexity_Game {
     /// <summary>
-    /// Class that creates a board and manages its win condition
+    /// Class that creates a board and places a piece in there
     /// </summary>
     public class Board {
         // X and Y of the array
@@ -10,7 +10,7 @@
         public Piece[,] BoardArray { get; }
 
         /// <summary>
-        /// Constructor for the Board, initializes the array
+        /// Initializes a new instance of the <see cref="Board{T}"/> class.
         /// </summary>
         public Board() {
             BoardArray = new Piece[X, Y];

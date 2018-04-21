@@ -3,12 +3,13 @@
 namespace Simplexity_Game {
 
     /// <summary>
-    /// Class that wil serve as the Gameloop to run the game cicles
+    /// Class that wil serve as the Gameloop to run the game cicles and 
+    /// communicate between the needed classes
     /// </summary>
     public class GameLoop {
 
         /// <summary>
-        /// Constructor for the GameLoop
+        /// Initializes a new instance of the <see cref="GameLoop{T}"/> class.
         /// </summary>
         public GameLoop() {
 
@@ -36,7 +37,7 @@ namespace Simplexity_Game {
             // Piece input
             string shape;
             // Empty object that saves the player that won
-            Object playing = null;
+            Object end = null;
 
             do {
                 Console.Clear();
@@ -86,14 +87,14 @@ namespace Simplexity_Game {
                     turn--;
                 }
 
-                playing = checker.CheckWin(board);
+                end = checker.CheckWin(board);
 
                 turn++;
-            } while (playing == null);
+            } while (end == null);
 
             Console.Clear();
             visualization.ShowBoard(board.BoardArray);
-            visualization.FinalMessage(playing);
+            visualization.FinalMessage(end);
             Console.ReadKey();
         }
     }

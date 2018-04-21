@@ -1,9 +1,15 @@
 ﻿namespace Simplexity_Game {
     /// <summary>
-    /// Enumeration for shape
+    /// Shapes of the piece
     /// </summary>
     public enum Shape {
+        /// <summary>
+        /// Cilindric shape
+        /// </summary>
         Cilinder = 0,
+        /// <summary>
+        /// Cubic shape
+        /// </summary>
         Cube
     }
 }

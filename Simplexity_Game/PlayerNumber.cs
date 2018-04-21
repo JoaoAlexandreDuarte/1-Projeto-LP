@@ -1,9 +1,15 @@
 ﻿namespace Simplexity_Game {
     /// <summary>
-    /// Enumeration for player
+    /// Player numbers
     /// </summary>
     public enum PlayerNumber {
+        /// <summary>
+        /// Number One
+        /// </summary>
         One = 1,
+        /// <summary>
+        /// Number Two
+        /// </summary>
         Two
     }
 }

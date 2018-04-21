@@ -7,7 +7,7 @@ namespace Simplexity_Game {
     class Checker {
 
         /// <summary>
-        /// Constructor for Checker
+        /// Initializes a new instance of the <see cref="Checker{T}"/> class.
         /// </summary>
         public Checker() {
 
@@ -24,11 +24,20 @@ namespace Simplexity_Game {
             // Empty player that will be returned
             Object wonPlayer = null;
 
-            winCondition = CheckHorizontal(board, "Shape");
-            if (winCondition == null) winCondition = CheckHorizontal(board,
-                "Color");
+            // Checks the Win Conditions by Shape
+            winCondition = CheckLinear(board, "Shape", "Horizontal");
+            if (winCondition == null) {
+                winCondition = CheckLinear(board, "Shape", "Vertical");
+            } else if (winCondition == null) {
+                winCondition = CheckLinear(board, "Color", "Horizontal");
+            } else if (winCondition == null) {
+                winCondition = CheckLinear(board, "Color", "Vertical");
+            }
 
 
+            // If there's any kind of Win Condition it will return the
+            // corresponding one, there's many if's in order to promote a 
+            // good practice of only having 1 return 
             if (winCondition != null) {
                 if ((Shape)winCondition == Shape.Cilinder) {
                     wonPlayer = PlayerNumber.One;
@@ -39,6 +48,7 @@ namespace Simplexity_Game {
                 } else if ((Color)winCondition == Color.Red) {
                     wonPlayer = PlayerNumber.Two;
                 } else {
+                    // If the code reaches here there's something wrong
                     wonPlayer = -1;
                 }
             }
@@ -46,30 +56,35 @@ namespace Simplexity_Game {
             return wonPlayer;
         }
 
-        private Object CheckHorizontal(Board board, string query) {
+        /// <summary>
+        /// Checks linearly, both horizontally and vertically according to the
+        /// way input, receives the query that can be "Shape" or "Color" in
+        /// order to know what it should search for 
+        /// </summary>
+        private Object CheckLinear(Board board, string query, string way) {
             Object winCondition = null;
             bool isLooping = true;
             int cont = 0;
             Object temp1 = null, temp2 = null;
-            Shape shape1, shape2;
-            Color color1, color2;
+            Piece space1, space2;
 
             for (int i = 0; i < board.X; i++) {
                 for (int j = 0; j < board.Y - 1; j++) {
+                    if (way == "Horizontal") {
+                        space1 = board.BoardArray[i, j];
+                        space2 = board.BoardArray[i, j + 1];
+                    } else {
+                        space1 = board.BoardArray[j, i];
+                        space2 = board.BoardArray[j + 1, i];
+                    }
 
-                    if ((board.BoardArray[i, j] == null) ||
-                        (board.BoardArray[i, j + 1] == null)) {
-
+                    if ((space1 == null) || (space2 == null)) {
                         cont = 0;
                     } else {
-                        shape1 = board.BoardArray[i, j].Shape;
-                        color1 = board.BoardArray[i, j].Color;
-                        shape2 = board.BoardArray[i, j + 1].Shape;
-                        color2 = board.BoardArray[i, j + 1].Color;
 
                         if (query == "Shape") {
-                            temp1 = shape1;
-                            temp2 = shape2;
+                            temp1 = space1.Shape;
+                            temp2 = space2.Shape;
 
                             if ((Shape)temp1 == (Shape)temp2) {
                                 cont++;
@@ -82,8 +97,8 @@ namespace Simplexity_Game {
                                 cont = 0;
                             }
                         } else {
-                            temp1 = color1;
-                            temp2 = color2;
+                            temp1 = space1.Color;
+                            temp2 = space2.Color;
 
                             if ((Color)temp1 == (Color)temp2) {
                                 cont++;
@@ -101,11 +116,6 @@ namespace Simplexity_Game {
                 if (!isLooping) break;
             }
             return winCondition;
-        }
-
-        private Object CheckVertical() {
-
-            return null;
         }
     }
 }

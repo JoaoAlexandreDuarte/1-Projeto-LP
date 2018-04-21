@@ -68,6 +68,13 @@ namespace Simplexity_Game {
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Indicates the current turn
+        /// </summary>
+        public void CurrentTurn(int turn) {
+            Console.WriteLine("\nCurrent turn: " + (turn + 1));
+        }
+
         public void FinalMessage(Object result) {
             if ((PlayerNumber)result == PlayerNumber.One) {
                 Console.WriteLine("\nPlayer 1 has won!");

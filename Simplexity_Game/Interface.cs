@@ -63,18 +63,38 @@ namespace Simplexity_Game {
             Console.ReadLine();
         }
 
-        public void ErrorFull() {
-            Console.WriteLine("\nThe row is full! Check another one");
+        /// <summary>
+        /// Renders the error for when the player places a piece in a filled
+        /// row
+        /// </summary>
+        public void ErrorPlace() {
+            Console.WriteLine("\nThe row is either full or you placed a piece" +
+                "you no longer have! Check another one");
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Indicates the current turn
+        /// </summary>
+        public void CurrentTurn(int turn) {
+            Console.WriteLine("\nCurrent turn: " + (turn + 1));
+        }
+
+        /// <summary>
+        /// Displays the final message
+        /// </summary>
+        /// <param name="result"></param>
         public void FinalMessage(Object result) {
+            // Message for when the player one wins
             if ((PlayerNumber)result == PlayerNumber.One) {
                 Console.WriteLine("\nPlayer 1 has won!");
+            // Message for when the player two wins
             } else if ((PlayerNumber)result == PlayerNumber.Two) {
                 Console.WriteLine("\nPlayer 2 has won!");
-            } else if (result == (Object)0) {
+            // Message for when it's a draw
+            } else if ((int)result == 0) {
                 Console.WriteLine("\nThe game has ended in a draw!");
+            // Error message
             } else {
                 Console.WriteLine("\nSomething went wrong!");
             }

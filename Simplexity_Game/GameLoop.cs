@@ -101,7 +101,7 @@ namespace Simplexity_Game {
                 }
 
                 // Verificates if the game has finished
-                end = checker.CheckWin(board);
+                end = checker.CheckWin(board, player1, player2);
 
                 turn++;
             // While there's no winner, the game will continue to repeat

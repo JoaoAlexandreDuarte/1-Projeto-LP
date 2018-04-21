@@ -45,13 +45,16 @@ namespace Simplexity_Game {
                 // Shows the Board state
                 visualization.ShowBoard(board.BoardArray);
 
-                //
+                // If the number of the turn is divisible by 2 it's the player
+                // 1's turn, if not, it's the other player's turn
                 currentPlayer = (turn % 2) == 0 ? player1 : player2;
 
-
-                Console.WriteLine("\nCurrent turn: " + (turn + 1));
+                // Indicates the current turn
+                visualization.CurrentTurn(turn);
+                // Information about the current player
                 visualization.ShowInfo(currentPlayer);
 
+                // Asks which column the player wants to play the piece
                 visualization.AskColumn();
 
                 // TryParse tries to convert to int32, used this way so that
@@ -59,41 +62,55 @@ namespace Simplexity_Game {
                 // program.
                 Int32.TryParse(Console.ReadLine(), out column);
 
+                // If it's a valid value(1-7) because it's what the player sees
                 if ((column >= 1) && (column <= 7)) {
+                    // Asks which piece to play
                     visualization.AskPiece();
 
                     shape = Console.ReadLine();
 
+                    // Verifies if it's a valid input for cube
                     if ((shape == "1") || (shape == "cube") ||
                         (shape == "Cube")) {
+                        // If the returned value of the method is false, shows
+                        // the error message
                         if (!board.PlacePiece(currentPlayer.PlayCube(),
                             column - 1)) {
                             turn--;
                             visualization.ErrorFull();
                         }
+                    // Verifies if it's a valid input for cilinder
                     } else if ((shape == "2") || (shape == "cilinder") ||
                         (shape == "Cilinder")) {
+                        // If the returned value of the method is false, shows
+                        // the error message
                         if (!board.PlacePiece(currentPlayer.PlayCilinder(),
                             column - 1)) {
                             turn--;
                             visualization.ErrorFull();
                         }
+                    // If it's neither it'll display the error piece message
                     } else {
                         visualization.ErrorPiece();
                         turn--;
                     }
+                // If it's neither it'll display the error column message
                 } else {
                     visualization.ErrorColumn();
                     turn--;
                 }
 
+                // Verificates if the game has finished
                 end = checker.CheckWin(board);
 
                 turn++;
+            // While there's no winner, the game will continue to repeat
             } while (end == null);
 
             Console.Clear();
+            // Shows the board one last time so the player can see
             visualization.ShowBoard(board.BoardArray);
+            // Displays the end message
             visualization.FinalMessage(end);
             Console.ReadKey();
         }

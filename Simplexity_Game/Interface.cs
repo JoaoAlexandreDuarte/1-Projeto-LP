@@ -83,7 +83,6 @@ namespace Simplexity_Game {
         /// <summary>
         /// Displays the final message
         /// </summary>
-        /// <param name="result"></param>
         public void FinalMessage(Object result) {
             // Message for when the player one wins
             if ((PlayerNumber)result == PlayerNumber.One) {

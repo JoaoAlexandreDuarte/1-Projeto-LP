@@ -3,13 +3,13 @@
 ## Who did this project?
 
 * __Inês Gonçalves__
-    * a21702076
+  * a21702076
 
 * __Inês Nunes__
-    * a21702520
+  * a21702520
 
 * __João Duarte__
-    * a21702097
+  * a21702097
 
 ## Git repository
 
@@ -22,26 +22,26 @@ Everyone contributed and helped with the project, both in person and online,
 but below, there's a summary of each individual's contributions:
 
 * __Inês Gonçalves__
-    * Enumerations : Color and Shape;
-    * Class: Piece;
-    * Made the diagram and fluxogram;
-    * Made and fixed comments;
-    * Helped with the report.
+  * Enumerations : Color and Shape;
+  * Class: Piece;
+  * Made the diagram and fluxogram;
+  * Made and fixed comments;
+  * Helped with the report.
 
 * __Inês Nunes__
-    * Enumerations: PlayerNumber;
-    * Class: Player, Interface, GameLoop;
-    * Added and fixed comments;
-    * Helped with the fluxogram and diagram;
-    * Made the report.
+  * Enumerations: PlayerNumber;
+  * Class: Player, Interface, GameLoop;
+  * Added and fixed comments;
+  * Helped with the fluxogram and diagram;
+  * Made the report.
 
 * __João Duarte__
-    * Class: Board, GameLoop, Checker;
-    * Improved the other classes;
-    * Made comments;
-    * Helped with the report;
-    * Helped with the diagram;
-    * Coordinated the overall project and assisted the fellow colleagues.
+  * Class: Board, GameLoop, Checker;
+  * Improved the other classes;
+  * Made comments;
+  * Helped with the report;
+  * Helped with the diagram;
+  * Coordinated the overall project and assisted the fellow colleagues.
 
 ## Our solution
 

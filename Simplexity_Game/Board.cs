@@ -6,11 +6,14 @@
         // X and Y of the array
         public int X { get; } = 7;
         public int Y { get; } = 7;
-        // Bi-dimensional array that will serve as a board
+        /// <summary>
+        /// Bi-dimensional array that will serve as a board
+        /// </summary>
+
         public Piece[,] BoardArray { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Board{T}"/> class.
+        /// Initializes a new instance of the <see cref="Board"/> class.
         /// </summary>
         public Board() {
             BoardArray = new Piece[X, Y];

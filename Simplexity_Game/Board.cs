@@ -3,13 +3,17 @@
     /// Class that creates a board and places a piece in there
     /// </summary>
     public class Board {
-        // X and Y of the array
+        /// <summary>
+        /// X of the array
+        /// </summary>
         public int X { get; } = 7;
+        /// <summary>
+        /// Y of the array
+        /// </summary>
         public int Y { get; } = 7;
         /// <summary>
         /// Bi-dimensional array that will serve as a board
         /// </summary>
-
         public Piece[,] BoardArray { get; }
 
         /// <summary>

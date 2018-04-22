@@ -1,4 +1,7 @@
 ﻿namespace Simplexity_Game {
+    /// <summary>
+    /// Class that contains the main method
+    /// </summary>
     public class Program {
         /// <summary>
         /// Main method that initializes the Game

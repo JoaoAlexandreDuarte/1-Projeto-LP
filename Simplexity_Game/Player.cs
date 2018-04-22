@@ -6,15 +6,29 @@
         // Constants that save the player's color
         private const Color p1Color = Color.White;
         private const Color p2Color = Color.Red;
-        // Property that will save the player's number
+        /// <summary>
+        /// Property that will save the player's number
+        /// </summary>
         public PlayerNumber Number { get; }
-        // The pieces given to the player
+        /// <summary>
+        /// The cubes given to the player
+        /// </summary>
         public Piece Cube { get; private set; }
+        /// <summary>
+        /// The cilinders given to the player
+        /// </summary>
         public Piece Cilinder { get; private set; }
-        // The number of pieces given to the player
+        /// <summary>
+        /// The number of cubes given to the player
+        /// </summary>
         public short CubesNumber { get; private set; }
+        /// <summary>
+        /// The number of pieces given to the player
+        /// </summary>
         public short CilindersNumber { get; private set; }
-        // The total number of pieces given to the player
+        /// <summary>
+        /// The total number of pieces given to the player
+        /// </summary>
         public short TotalPieces {
             get {
                 return (short)(CubesNumber + CilindersNumber);
@@ -22,7 +36,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Player{T}"/> class.
+        /// Initializes a new instance of the <see cref="Player"/> class.
         /// </summary>
         public Player(PlayerNumber number) {
             Number = number;

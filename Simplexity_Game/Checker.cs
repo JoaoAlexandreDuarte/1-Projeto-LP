@@ -7,7 +7,7 @@ namespace Simplexity_Game {
     class Checker {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Checker{T}"/> class.
+        /// Initializes a new instance of the <see cref="Checker"/> class.
         /// </summary>
         public Checker() {
 

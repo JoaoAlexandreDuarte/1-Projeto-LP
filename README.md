@@ -13,10 +13,10 @@
 
 ## Git repository
 
-We worked in a private repository that will be available in this
+We worked in a private repository that will be available publicly in this
 [link](https://github.com/JoaoAlexandreDuarte/1-Projeto-LP) after the deadline.
 
-## Information about who made what // Who did what?
+## Task distribution
 
 Everyone contributed and helped with the project, both in person and online,
 but below, there's a summary of each individual's contributions:
@@ -26,6 +26,7 @@ but below, there's a summary of each individual's contributions:
   * Class: Piece;
   * Made the diagram and fluxogram;
   * Made and fixed comments;
+  * Added the XML;
   * Helped with the report.
 
 * __Inês Nunes__
@@ -81,7 +82,10 @@ other conditions, and takes care of checking which player has won.
 
 ## Conclusions
 
-With this project, we learned 
+With this project, we consolidated how use classes and how to use
+github/git better. Specifically its commands and repositories.
+And with this, we learned that classes are very important, and will
+indefinitely be useful further along the road.
 
 ## References
 

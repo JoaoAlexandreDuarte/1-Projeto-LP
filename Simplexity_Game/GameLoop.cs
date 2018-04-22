@@ -3,7 +3,7 @@
 namespace Simplexity_Game {
 
     /// <summary>
-    /// Class that wil serve as the Gameloop to run the game cicles and 
+    /// Class that will serve as the Gameloop to run the game cycles and 
     /// communicate between the needed classes
     /// </summary>
     public class GameLoop {
@@ -45,8 +45,8 @@ namespace Simplexity_Game {
                 // Shows the Board state
                 visualization.ShowBoard(board.BoardArray);
 
-                // If the number of the turn is divisible by 2 it's the player
-                // 1's turn, if not, it's the other player's turn
+                // If the number of the turn is divisible by 2, then it's the
+                // player 1's turn, if not, it's the other player's turn
                 currentPlayer = (turn % 2) == 0 ? player1 : player2;
 
                 // Indicates the current turn
@@ -62,7 +62,7 @@ namespace Simplexity_Game {
                 // program.
                 Int32.TryParse(Console.ReadLine(), out column);
 
-                // If it's a valid value(1-7) because it's what the player sees
+                // If it's a valid value(1-7), because it's what the player sees
                 if ((column >= 1) && (column <= 7)) {
                     // Asks which piece to play
                     visualization.AskPiece();
@@ -100,7 +100,7 @@ namespace Simplexity_Game {
                     turn--;
                 }
 
-                // Verificates if the game has finished
+                // Verifies if the game has finished
                 end = checker.CheckWin(board, player1, player2);
 
                 turn++;
@@ -108,7 +108,7 @@ namespace Simplexity_Game {
             } while (end == null);
 
             Console.Clear();
-            // Shows the board one last time so the player can see
+            // Shows the board one last time so that the player can see
             visualization.ShowBoard(board.BoardArray);
             // Displays the end message
             visualization.FinalMessage(end);

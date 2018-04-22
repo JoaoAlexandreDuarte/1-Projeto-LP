@@ -125,7 +125,7 @@ namespace Simplexity_Game {
                         (board[i, j].Shape == Shape.Cilinder)) {
                         Console.Write(circle);
 
-                        // If there's a  White Cube
+                        // If there's a White Cube
                     } else if ((board[i, j].Color == Color.White) &&
                         (board[i, j].Shape == Shape.Cube)) {
                         Console.Write(square);

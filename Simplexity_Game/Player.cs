@@ -3,7 +3,7 @@
     /// Class that creates the players and its pieces
     /// </summary>
     public class Player {
-        // Constants that saves the player color
+        // Constants that save the player's color
         private const Color p1Color = Color.White;
         private const Color p2Color = Color.Red;
         // Property that will save the player's number

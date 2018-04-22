@@ -6,7 +6,7 @@
         static void Main(string[] args) {
             // Creates an instance of GameLoop to start the game
             GameLoop gameLoop = new GameLoop();
-            // Calls the Update method to update de game
+            // Calls the Update method to update the game
             gameLoop.Update();
         }
     }

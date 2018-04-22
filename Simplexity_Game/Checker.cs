@@ -92,7 +92,7 @@ namespace Simplexity_Game {
             Object winCondition = null;
             // Checks while the loop repeats itself
             bool isLooping = true;
-            // Creates four temporary variables according to the way
+            // Creates four temporary variables according to the query
             Piece space1, space2, space3, space4;
 
             // If it's 0 it searches Horizontally, if it's 1 it searches
@@ -174,8 +174,8 @@ namespace Simplexity_Game {
 
             // Loops through the array
             for (int column = 0; column < board.Y - 3; column++) {
-                // Loops to the right and down ( it increments 1 in both the
-                // column and the row )
+                // Loops to the right and down (it increments 1 in both the
+                // column and the row)
                 for (int row = 0; row < board.X - 4; row++) {
 
                     // Starter space
@@ -230,8 +230,8 @@ namespace Simplexity_Game {
                 // Breaks the loop
                 if (!isLooping) break;
 
-                // Loops to the right and up ( it decrements 1 in the column 
-                // and the decremetns 1 in the row )
+                // Loops to the right and up (it decrements 1 in the column 
+                // and the decremetns 1 in the row)
                 for (int row = (board.X - board.X + 3); row < board.X - 1;
                     row++) {
 
@@ -245,7 +245,7 @@ namespace Simplexity_Game {
                         (board.BoardArray[row - 3, column + 3] == null)) {
 
                     } else {
-                        // Searching method verifies for shapes
+                        // Searching method that verifies for shapes
                         if (query == "Shape") {
 
                             // If there are 4 equal colors in order it sets the
@@ -261,7 +261,7 @@ namespace Simplexity_Game {
                                 isLooping = false;
                             }
 
-                            //Searching method verifies for colors
+                            // Searching method that verifies for colors
                         } else {
 
                             // If there are 4 equal colors in order it sets the

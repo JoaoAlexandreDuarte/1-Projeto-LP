@@ -70,7 +70,7 @@ other conditions, and takes care of checking which player has won.
 
 ### UML Diagram
 
-![UML Diagram](https://i.imgur.com/nBJECWs.png)
+![UML Diagram](https://i.imgur.com/ldm1VDp.png)
 
 ### Fluxogram
 

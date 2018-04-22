@@ -92,8 +92,6 @@ namespace Simplexity_Game {
             Object winCondition = null;
             // Checks while the loop repeats itself
             bool isLooping = true;
-            // Counts how many times the loop repeats 
-            int cont = 0;
             // Creates four temporary variables according to the way
             Piece space1, space2, space3, space4;
 

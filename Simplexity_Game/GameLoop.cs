@@ -9,7 +9,7 @@ namespace Simplexity_Game {
     public class GameLoop {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameLoop{T}"/> class.
+        /// Initializes a new instance of the <see cref="GameLoop"/> class.
         /// </summary>
         public GameLoop() {
 

@@ -40,6 +40,7 @@ but below, there's a summary of each individual's contributions:
     * Improved the other classes;
     * Made comments;
     * Helped with the report;
+    * Helped with the diagram;
     * Coordinated the overall project and assisted the fellow colleagues.
 
 ## Our solution

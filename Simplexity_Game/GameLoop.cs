@@ -4,7 +4,7 @@ namespace Simplexity_Game {
 
     /// <summary>
     /// Class that will serve as the Gameloop to run the game cycles and 
-    /// communicate between the needed classes
+    /// communicates between the needed classes
     /// </summary>
     public class GameLoop {
 

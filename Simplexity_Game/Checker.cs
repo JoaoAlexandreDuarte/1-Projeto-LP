@@ -24,27 +24,19 @@ namespace Simplexity_Game {
             // Empty player that will be returned
             Object wonPlayer = null;
 
-            // Searches horizontally for 4 equal shapes
-            winCondition = CheckLinear(board, "Shape", "Horizontal");
-            // Searches vertically for 4 equal shapes
-            if (winCondition == null) {
-                winCondition = CheckLinear(board, "Shape", "Vertical");
-            }
-            // Searches diagonally for 4 equal shapes
+            // Searches horizontally and vertically for 4 equal shapes
+            winCondition = CheckLinear(board, "Shape");
+            // Searches diagonally (both ways) for 4 equal shapes
             if (winCondition == null) {
                 winCondition = CheckDiagonal(board, "Shape");
             }
-            // Searches horizontally for 4 equal colors
+            // Searches horizontally and vertically for 4 equal colors
             if (winCondition == null) {
-                winCondition = CheckLinear(board, "Color", "Horizontal");
+                winCondition = CheckLinear(board, "Color");
             }
-            // Searches vertically for 4 equal colors
+            // Searches diagonally (both ways) for 4 equal colors
             if (winCondition == null) {
-                winCondition = CheckLinear(board, "Color", "Vertical");
-            }
-            // Searches diagonally for 4 equal colors
-            if (winCondition == null) {
-                winCondition = CheckDiagonal(board, "~Color");
+                winCondition = CheckDiagonal(board, "Color");
             }
 
             // If there's any kind of Win Condition it will return the
@@ -63,6 +55,7 @@ namespace Simplexity_Game {
                     // If there's 4 red pieces then player two wins
                 } else if ((Color)winCondition == Color.Red) {
                     wonPlayer = PlayerNumber.Two;
+                    // If there's no pieces left the game ends in a draw
                 } else if (ChecksDraw(player1, player2) == true) {
                     wonPlayer = 0;
                 } else {
@@ -75,7 +68,8 @@ namespace Simplexity_Game {
         }
 
         /// <summary>
-        /// Checks if it's a draw
+        /// Checks if it's a draw by checking if there are no pieces left for
+        /// both players
         /// </summary>
         private bool ChecksDraw(Player player1, Player player2) {
             // Initializes at null
@@ -89,89 +83,77 @@ namespace Simplexity_Game {
         }
 
         /// <summary>
-        /// Checks linearly, both horizontally and vertically according to the
-        /// way input, receives the query that can be "Shape" or "Color" in
-        /// order to know what it should search for 
+        /// Checks linearly, both horizontally and vertically, 
+        /// receives the query that can be "Shape" or "Color" in order to know
+        /// what it should search for 
         /// </summary>
-        private Object CheckLinear(Board board, string query, string way) {
+        private Object CheckLinear(Board board, string query) {
             // Initializes the win condition at null
             Object winCondition = null;
             // Checks while the loop repeats itself
             bool isLooping = true;
             // Counts how many times the loop repeats 
             int cont = 0;
-            // Creates two temporary variables according to the query
-            Object temp1 = null, temp2 = null;
-            // Creates two temporary variables according to the way
-            Piece space1, space2;
+            // Creates four temporary variables according to the way
+            Piece space1, space2, space3, space4;
 
-            // Loops through the board
-            for (int row = 0; row < board.X; row++) {
-                for (int column = 0; column < board.Y - 1; column++) {
-                    // Checks if it's horizontal
-                    if (way == "Horizontal") {
-                        space1 = board.BoardArray[row, column];
-                        space2 = board.BoardArray[row, column + 1];
-                        // Checks if it's vertical
-                    } else {
-                        space1 = board.BoardArray[column, row];
-                        space2 = board.BoardArray[column + 1, row];
-                    }
-
-                    // Verificates if the spaces are empty
-                    if ((space1 == null) || (space2 == null)) {
-                        cont = 0;
-                        // Verificates if they have something
-                    } else {
-
-                        // The searching method verifies for shapes
-                        if (query == "Shape") {
-                            temp1 = space1.Shape;
-                            temp2 = space2.Shape;
-
-                            // Compares the current variable to the next
-                            if ((Shape)temp1 == (Shape)temp2) {
-                                // Adds one to the counter
-                                cont++;
-                                // Checks if it has 4 pieces in a row and sends
-                                // the information to the method that checks
-                                // for the win condition
-                                if (cont == 3) {
-                                    // Returns the type of the piece
-                                    winCondition = temp2;
-                                    isLooping = false;
-                                    break;
-                                }
-                                // If neither the conditions are true it will
-                                // reset the counter
-                            } else {
-                                cont = 0;
-                            }
-                            // The searching method verifies for color
+            // If it's 0 it searches Horizontally, if it's 1 it searches
+            // Vertically
+            for (int i = 0; i < 2; i++) {
+                // Loops through the board
+                for (int row = 0; row < board.X; row++) {
+                    for (int column = 0; column < board.Y - 3; column++) {
+                        // Checks if it's horizontal
+                        if (i == 0) {
+                            space1 = board.BoardArray[row, column];
+                            space2 = board.BoardArray[row, column + 1];
+                            space3 = board.BoardArray[row, column + 2];
+                            space4 = board.BoardArray[row, column + 3];
+                            // Checks if it's vertical
                         } else {
-                            temp1 = space1.Color;
-                            temp2 = space2.Color;
+                            space1 = board.BoardArray[column, row];
+                            space2 = board.BoardArray[column + 1, row];
+                            space3 = board.BoardArray[column + 2, row];
+                            space4 = board.BoardArray[column + 3, row];
+                        }
 
-                            // Compares the current variable to the next
-                            if ((Color)temp1 == (Color)temp2) {
-                                // Adds one to the counter
-                                cont++;
-                                // Checks if it has 4 pieces in a row and sends
-                                // the information to the method that checks
-                                // for the win condition
-                                if (cont == 3) {
-                                    // Returns the type of the piece
-                                    winCondition = temp2;
+                        // If the spaces are empty it does nothing
+                        if ((space1 == null) || (space2 == null) ||
+                            (space3 == null) || (space4 == null)) {
+                            // Verifies if they have something
+                        } else {
+
+                            // The searching method verifies for shapes
+                            if (query == "Shape") {
+
+                                // If there are 4 equal shapes in order it sets 
+                                // the win condition as the shape and stops
+                                // looping
+                                if ((space1.Shape == space2.Shape) &&
+                                    (space1.Shape == space3.Shape) &&
+                                    (space1.Shape == space4.Shape)) {
+
+                                    winCondition = space1.Shape;
                                     isLooping = false;
-                                    break;
                                 }
-                                // If neither the conditions are true it will
-                                // reset the counter
+                                // The searching method verifies for color
                             } else {
-                                cont = 0;
+
+                                // If there are 4 equal colors in order it sets 
+                                // the win condition as the color and stops
+                                // looping
+                                if ((space1.Color == space2.Color) &&
+                                    (space1.Color == space3.Color) &&
+                                    (space1.Color == space4.Color)) {
+
+                                    winCondition = space1.Color;
+                                    isLooping = false;
+                                }
                             }
                         }
                     }
+                    // Breaks the loop
+                    if (!isLooping) break;
                 }
                 // Breaks the loop
                 if (!isLooping) break;
@@ -180,21 +162,25 @@ namespace Simplexity_Game {
         }
 
         /// <summary>
-        /// Searches 
+        /// Checks diagonally, both right-up and right-down, receives the query
+        /// that can be "Shape" or "Color" in order to know what it should
+        /// search for 
         /// </summary>
         private Object CheckDiagonal(Board board, string query) {
             // Initializes the win condition at null
             Object winCondition = null;
             // Checks while the loop repeats itself
             bool isLooping = true;
-            // Default piece that will compare to others
+            // Default space that will compare to others
             Piece starter;
 
             // Loops through the array
             for (int column = 0; column < board.Y - 3; column++) {
-                // Loops to the right and down
+                // Loops to the right and down ( it increments 1 in both the
+                // column and the row )
                 for (int row = 0; row < board.X - 4; row++) {
 
+                    // Starter space
                     starter = board.BoardArray[row, column];
 
                     // If the spaces are empty it does nothing
@@ -203,10 +189,14 @@ namespace Simplexity_Game {
                         (board.BoardArray[row + 2, column + 2] == null) ||
                         (board.BoardArray[row + 3, column + 3] == null)) {
 
+                        // If the spaces are not empty it will try to check for
+                        // 4 equal Shapes or Colors
                     } else {
                         // Searching method verifies for shapes
                         if (query == "Shape") {
 
+                            // If there are 4 equal shapes in order it sets the
+                            // win condition as the shape and stops looping
                             if ((starter.Shape ==
                                 board.BoardArray[row + 1, column + 1].Shape) &&
                                 (starter.Shape ==
@@ -218,9 +208,11 @@ namespace Simplexity_Game {
                                 isLooping = false;
                             }
 
-                            //Searching method verifies for colors
+                            // Searching method verifies for colors
                         } else {
 
+                            // If there are 4 equal shapes in order it sets the
+                            // win condition as the shape and stops looping
                             if ((starter.Color ==
                                 board.BoardArray[row + 1, column + 1].Color) &&
                                 (starter.Color ==
@@ -233,14 +225,19 @@ namespace Simplexity_Game {
                             }
                         }
                     }
+                    // Breaks the loop
                     if (!isLooping) break;
                 }
 
+                // Breaks the loop
                 if (!isLooping) break;
-                // Loops to the right and up
+
+                // Loops to the right and up ( it decrements 1 in the column 
+                // and the decremetns 1 in the row )
                 for (int row = (board.X - board.X + 3); row < board.X - 1;
                     row++) {
 
+                    // Starter space
                     starter = board.BoardArray[row, column];
 
                     // If the spaces are empty it does nothing
@@ -253,6 +250,8 @@ namespace Simplexity_Game {
                         // Searching method verifies for shapes
                         if (query == "Shape") {
 
+                            // If there are 4 equal colors in order it sets the
+                            // win condition as the color and stops looping
                             if ((starter.Shape ==
                                 board.BoardArray[row - 1, column + 1].Shape) &&
                                 (starter.Shape ==
@@ -267,6 +266,8 @@ namespace Simplexity_Game {
                             //Searching method verifies for colors
                         } else {
 
+                            // If there are 4 equal colors in order it sets the
+                            // win condition as the color and stops looping
                             if ((starter.Color ==
                                 board.BoardArray[row - 1, column + 1].Color) &&
                                 (starter.Color ==
@@ -279,6 +280,7 @@ namespace Simplexity_Game {
                             }
                         }
                     }
+                    // Breaks the loop
                     if (!isLooping) break;
                 }
             }
